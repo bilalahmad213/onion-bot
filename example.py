@@ -3,6 +3,7 @@ import time
 
 from markovbot import MarkovBot
 
+
 # # # # #
 # INITIALISE
 
@@ -12,14 +13,9 @@ tweetbot = MarkovBot()
 # Get the current directory's path
 dirname = os.path.dirname(os.path.abspath(__file__))
 # Construct the path to the book
-
-#book=open("onion_headlines_filtered.txt", "r", encoding="mbcs")
-#text=book.read()
-tweetbot.read("onion_headlines.txt")
-#book.close()
-#book = os.path.join(dirname, u'onion_headlines_filtered.txt')
+book = os.path.join(dirname, u'Freud_Dream_Psychology.txt')
 # Make your bot read the book!
-
+tweetbot.read(book)
 
 
 # # # # #
@@ -31,12 +27,12 @@ tweetbot.read("onion_headlines.txt")
 # 	should attempt to use to start its text. It's nothing fancy: the bot will
 # 	simply try the first, and move on to the next if he can't find something
 # 	that works.
-my_first_text = tweetbot.generate_text(maxlength=25)
+my_first_text = tweetbot.generate_text(25, seedword=[u'dream', u'psychoanalysis'])
 
 # Print your text to the console
 print(u'\ntweetbot says: "%s"' % (my_first_text))
 
-"""
+
 # # # # #
 # TWITTER
 
@@ -103,5 +99,3 @@ tweetbot.twitter_autoreply_stop()
 # Use the following to stop periodically tweeting
 # (Don't do this directly after starting it, or your bot will do nothing!)
 tweetbot.twitter_tweeting_stop()
-
-"""
